@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>余诗瑶获奖情况汇总 - 超级炫酷版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: auto;
+        }
+
+        /* 背景动画粒子 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 20px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: auto;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* 头部区域 */
+        .hero-section {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            padding: 80px 0;
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .hero-title {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: heroFadeIn 2s ease-out;
+            background: linear-gradient(45deg, #fff, #f0f8ff, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            animation: heroFadeIn 2s ease-out 0.5s both;
+        }
+
+        .hero-info {
+            font-size: 1.1em;
+            opacity: 0.8;
+            animation: heroFadeIn 2s ease-out 1s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            animation: heroFadeIn 2s ease-out 1.5s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* 统计卡片网格 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            animation: countUp 2s ease-out;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* 章节样式 */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 35px;
+            font-size: 1.6em;
+            font-weight: bold;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .section-header:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+
+        .section-header::after {
+            content: '▼';
+            position: absolute;
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+
+        .section-header.collapsed::after {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        .section-content {
+            padding: 35px;
+            max-height: none; /* 移除高度限制 */
+            overflow: visible; /* 让所有内容可见 */
+            transition: all 0.5s ease;
+        }
+
+        .section-content.collapsed {
+            max-height: 0;
+            padding: 0 35px;
+        }
+
+        /* 表格容器 - 完全显示所有内容 */
+        .table-container {
+            width: 100%;
+            height: auto;
+            min-height: 800px; /* 给表格足够的高度 */
+            overflow: visible; /* 让所有内容都显示出来 */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+            margin-top: 25px;
+            padding: 20px; /* 给表格加点内边距 */
+        }
+        
+        
+        /* 表格样式 */
+        .awards-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1em; /* 恢复正常字体大小 */
+            table-layout: fixed; /* 固定布局确保列宽 */
+            background: white;
+            height: auto; /* 让表格高度自适应内容 */
+        }
+
+        .awards-table th,
+        .awards-table td {
+            padding: 15px 10px; /* 稍微减少padding让更多内容显示 */
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            vertical-align: middle; /* 垂直居中对齐 */
+        }
+
+        /* 设置表格列宽 - 完美适配屏幕 */
+        .awards-table th:nth-child(1),
+        .awards-table td:nth-child(1) {
+            width: 12%;
+        }
+
+        .awards-table th:nth-child(2),
+        .awards-table td:nth-child(2) {
+            width: 8%;
+        }
+
+        .awards-table th:nth-child(3),
+        .awards-table td:nth-child(3) {
+            width: 40%;
+        }
+
+        .awards-table th:nth-child(4),
+        .awards-table td:nth-child(4) {
+            width: 30%;
+        }
+
+        .awards-table th:nth-child(5),
+        .awards-table td:nth-child(5) {
+            width: 10%;
+        }
+
+        .awards-table th {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8edff 100%);
+            font-weight: bold;
+            color: #333;
+            position: sticky;
+            top: 80px;
+            z-index: 10;
+        }
+
+        .awards-table tbody tr {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .awards-table tbody tr:hover {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8edff 100%);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 级别徽章 */
+        .level-badge {
+            padding: 8px 16px;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.85em;
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .level-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .level-badge:hover::before {
+            left: 100%;
+        }
+
+        .level-国家级 { 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        .level-省级 { 
+            background: linear-gradient(135deg, #4834d4, #686de0);
+            box-shadow: 0 4px 15px rgba(72, 52, 212, 0.4);
+        }
+        .level-市级 { 
+            background: linear-gradient(135deg, #00d2d3, #54a0ff);
+            box-shadow: 0 4px 15px rgba(0, 210, 211, 0.4);
+        }
+        .level-校级 { 
+            background: linear-gradient(135deg, #ff9ff3, #f368e0);
+            box-shadow: 0 4px 15px rgba(255, 159, 243, 0.4);
+        }
+        .level-院级 { 
+            background: linear-gradient(135deg, #feca57, #ff9f43);
+            box-shadow: 0 4px 15px rgba(254, 202, 87, 0.4);
+        }
+        .level-县级 { 
+            background: linear-gradient(135deg, #48dbfb, #0abde3);
+            box-shadow: 0 4px 15px rgba(72, 219, 251, 0.4);
+        }
+
+        /* 奖项详情卡片 */
+        .award-detail-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8edff 100%);
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .award-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transition: width 0.4s ease;
+        }
+
+        .award-detail-card:hover::before {
+            width: 100%;
+        }
+
+        .award-detail-card:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-left-width: 8px;
+        }
+
+        .award-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .award-details {
+            color: #666;
+            line-height: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .award-details strong {
+            color: #333;
+        }
+
+        /* 时间轴 */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea, 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* 技能标签 */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 高亮文本 */
+        .highlight {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 4px 10px;
+            border-radius: 8px;
+            color: #2d3436;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(255, 234, 167, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 234, 167, 0.6);
+        }
+
+        /* 申请理由部分 */
+        .application-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .application-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .application-content {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+            line-height: 2;
+        }
+
+        /* 返回顶部按钮 */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            font-size: 1.2em;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .scroll-top.show {
+            display: block;
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        /* 底部区域 */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2));
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f0f8ff, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 动画定义 */
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .awards-table {
+                font-size: 0.8em;
+                table-layout: auto;
+            }
+            
+            .awards-table th,
+            .awards-table td {
+                padding: 12px 6px;
+                min-width: unset;
+                width: auto;
+            }
+
+            /* 移动端表格列宽调整 */
+            .awards-table th:nth-child(1),
+            .awards-table td:nth-child(1) {
+                width: 15%;
+            }
+
+            .awards-table th:nth-child(2),
+            .awards-table td:nth-child(2) {
+                width: 12%;
+            }
+
+            .awards-table th:nth-child(3),
+            .awards-table td:nth-child(3) {
+                width: 35%;
+            }
+
+            .awards-table th:nth-child(4),
+            .awards-table td:nth-child(4) {
+                width: 25%;
+            }
+
+            .awards-table th:nth-child(5),
+            .awards-table td:nth-child(5) {
+                width: 13%;
+            }
+            
+            .timeline {
+                padding-left: 25px;
+            }
+            
+            .timeline::before {
+                left: 12px;
+            }
+            
+            .timeline-item::before {
+                left: -20px;
+            }
+        }
+
+        /* 特殊效果 */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+            }
+        }
+
+        .float {
+            animation: float-animation 3s ease-in-out infinite;
+        }
+
+        @keyframes float-animation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.5s ease-out;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景粒子 -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">🏆 余诗瑶荣誉档案</div>
+            <ul class="nav-menu">
+                <li class="nav-item" onclick="scrollToSection('hero')">首页</li>
+                <li class="nav-item" onclick="scrollToSection('stats')">统计概览</li>
+                <li class="nav-item" onclick="scrollToSection('awards-table')">获奖列表</li>
+                <li class="nav-item" onclick="scrollToSection('national-awards')">国家级奖项</li>
+                <li class="nav-item" onclick="scrollToSection('school-awards')">校级金奖</li>
+                <li class="nav-item" onclick="scrollToSection('other-honors')">其他荣誉</li>
+                <li class="nav-item" onclick="scrollToSection('application')">申请理由</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 英雄区域 -->
+        <section id="hero" class="hero-section">
+            <h1 class="hero-title">🌟 余诗瑶获奖情况汇总 🌟</h1>
+            <p class="hero-subtitle">江西师范高等专科学校 致远书院 雕刻艺术设计专业</p>
+            <p class="hero-info">学号：932407130093 | 班级：24级雕刻艺术设计木器工艺班 | 排名：1/33</p>
+            <p class="hero-info">政治面貌：共青团员 | 入学时间：2024年9月1日 | 必修课程：27门全部及格</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat glow">
+                    <span class="hero-stat-number">19</span>
+                    <span class="hero-stat-label">获奖总数</span>
+                </div>
+                <div class="hero-stat glow">
+                    <span class="hero-stat-number">7</span>
+                    <span class="hero-stat-label">国家级奖项</span>
+                </div>
+                <div class="hero-stat glow">
+                    <span class="hero-stat-number">2</span>
+                    <span class="hero-stat-label">校级金奖</span>
+                </div>
+                <div class="hero-stat glow">
+                    <span class="hero-stat-number">100%</span>
+                    <span class="hero-stat-label">成绩优异率</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 统计概览 -->
+        <section id="stats" class="stats-grid">
+            <div class="stat-card float" onclick="showModal('总获奖数详情', '共获得各级奖项19项，涵盖国家级、省级、市级、校级、院级、县级六个层次，充分展现了全面发展的综合素质。')">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-number">19</div>
+                <div class="stat-label">获奖总数</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('国家级奖项详情', '包含中国知网科普竞赛一等奖、全国大学生英语竞赛二等奖、2项软件著作权、3项职业资格证书等，体现了扎实的专业基础和创新能力。')">
+                <div class="stat-icon">🇨🇳</div>
+                <div class="stat-number">7</div>
+                <div class="stat-label">国家级奖项</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('校级金奖详情', '在中国国际大学生创新大赛红色筑梦之旅赛道中，悦发AI项目和AI智农项目双双获得金奖，展现了在人工智能领域的突出创新能力。')">
+                <div class="stat-icon">🥇</div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">校级金奖</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('志愿服务详情', '累计志愿服务时长267.5小时，参与暑期三下乡、返家乡等多项社会实践活动，体现了强烈的社会责任感和奉献精神。')">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-number">267.5</div>
+                <div class="stat-label">志愿服务小时</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('学习成绩详情', '在班级33名同学中排名第1，必修课27门全部及格，成绩优异率达到100%，充分体现了扎实的学习基础和优秀的学习能力。')">
+                <div class="stat-icon">📚</div>
+                <div class="stat-number">1/33</div>
+                <div class="stat-label">成绩排名</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('学习强国详情', '学习强国积分高达13386+分，获得学习强国荣誉证书，体现了对时事政治的关注和持续学习的态度。')">
+                <div class="stat-icon">📖</div>
+                <div class="stat-number">13386+</div>
+                <div class="stat-label">学习强国积分</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('软件著作权详情', '获得2项国家级软件著作权：幻笔商品三维数据建模与增强现实展示软件、校园活动组织工具软件，体现了技术创新和成果转化能力。')">
+                <div class="stat-icon">💻</div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">软件著作权</div>
+            </div>
+            <div class="stat-card float" onclick="showModal('专业认证详情', '获得人工智能训练师（高级/初级）、智能网联车安全员（高级）、阿里巴巴前端/终端工程师、设计专业能力认证等6项专业技能认证。')">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">专业技能认证</div>
+            </div>
+        </section>
+
+        <!-- 主要获奖情况表格 -->
+        <div id="awards-table" class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                📋 主要获奖情况一览表
+            </div>
+            <div class="section-content">
+                <p style="margin-bottom: 20px; color: #666; font-size: 1.1em;">以下是按获奖级别从高到低排列的详细获奖情况，点击表格行可查看更多详情。</p>
+                <div class="table-container">
+                    <table class="awards-table">
+                    <thead>
+                        <tr>
+                            <th>获奖级别</th>
+                            <th>日期</th>
+                            <th>奖项名称</th>
+                            <th>颁奖单位</th>
+                            <th>获奖等级</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="showAwardDetail('中国知网科普竞赛', '国家级一等奖', '2025年9月', '中国知网、问卷星、SPRRPRO', '这是一项全国性的科普知识竞赛，旨在提高大学生的科学素养和创新思维能力。获得一等奖充分体现了扎实的知识基础和优秀的学习能力。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>2025.9</td>
+                            <td>中国知网科普竞赛</td>
+                            <td>中国知网、问卷星、SPRRPRO</td>
+                            <td><span class="highlight">一等奖</span></td>
+                        </tr>
+                        <tr onclick="showAwardDetail('全国大学生英语竞赛', '国家级二等奖', '2025年5月', '全国大学生英语竞赛组委会、全国高等师范院校外语教学与研究协作组', '全国大学生英语竞赛是面向全国大学生的英语综合能力竞赛，旨在贯彻落实教育部关于大学英语教学改革精神，促进大学生英语水平的全面提高。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>2025.5</td>
+                            <td>全国大学生英语竞赛</td>
+                            <td>全国大学生英语竞赛组委会、全国高等师范院校外语教学与研究协作组</td>
+                            <td><span class="highlight">二等奖</span></td>
+                        </tr>
+                        <tr onclick="showAwardDetail('幻笔商品三维数据建模与增强现实展示软件', '国家级软件著作权', '2025年8月', '中华人民共和国国家版权局', '该软件结合了三维建模技术和增强现实技术，为商品展示提供了创新的解决方案，体现了在技术创新和产品开发方面的能力。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>2025.8</td>
+                            <td>幻笔商品三维数据建模与增强现实展示软件</td>
+                            <td>中华人民共和国国家版权局</td>
+                            <td>软件著作权</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('校园活动组织工具软件', '国家级软件著作权', '2025年8月', '中华人民共和国国家版权局', '该软件针对校园活动组织管理的实际需求，提供了完整的解决方案，体现了对校园生活的深入理解和技术应用能力。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>2025.8</td>
+                            <td>校园活动组织工具软件</td>
+                            <td>中华人民共和国国家版权局</td>
+                            <td>软件著作权</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('无人机驾驶员执照', '国家级执业资格', '获得时间不详', '中国民用航空局', '无人机驾驶员执照是从事无人机飞行活动的必备资质，体现了在新兴技术领域的学习能力和实践能力。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>-</td>
+                            <td>无人机驾驶员执照</td>
+                            <td>中国民用航空局</td>
+                            <td>执业资格证书</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('普通话水平测试', '国家级等级证书', '获得时间不详', '国家语言文字工作委员会', '普通话水平测试是对应试人运用普通话的规范程度、熟练程度的口语考试，是语言文字工作的重要组成部分。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>-</td>
+                            <td>普通话水平测试</td>
+                            <td>国家语言文字工作委员会</td>
+                            <td>等级证书</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('全国计算机等级考试', '国家级等级证书', '获得时间不详', '教育部考试中心', '全国计算机等级考试是经教育部批准，由教育部考试中心主办，面向社会，用于考查应试人员计算机应用知识与技能的全国性计算机水平考试体系。')">
+                            <td><span class="level-badge level-国家级">国家级</span></td>
+                            <td>-</td>
+                            <td>全国计算机等级考试</td>
+                            <td>教育部考试中心</td>
+                            <td>等级证书</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('第二十届青少年冰心文学江西省征文', '省级荣誉证书', '2025年6月', '青少年冰心文学征稿活动组织委员会', '冰心文学征文活动旨在传承冰心先生的文学精神，鼓励青少年文学创作，提高文学素养和写作能力。')">
+                            <td><span class="level-badge level-省级">省级</span></td>
+                            <td>2025.6</td>
+                            <td>第二十届青少年冰心文学江西省征文</td>
+                            <td>青少年冰心文学征稿活动组织委员会</td>
+                            <td>荣誉证书</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('全国高校青年九周游', '市级证书', '获得时间不详', '相关部门', '该活动旨在丰富大学生的课余生活，增强团队协作能力和社会实践能力。')">
+                            <td><span class="level-badge level-市级">市级</span></td>
+                            <td>-</td>
+                            <td>全国高校青年九周游</td>
+                            <td>相关部门</td>
+                            <td>证书</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('中国国际大学生创新大赛红色筑梦之旅赛道（悦发AI项目）', '校级金奖', '2025年4月', '学校', '悦发AI项目结合了人工智能技术和视觉艺术，为光影效果的智能化处理提供了创新解决方案，体现了跨学科的创新能力。')">
+                            <td><span class="level-badge level-校级">校级</span></td>
+                            <td>2025.4</td>
+                            <td>中国国际大学生创新大赛红色筑梦之旅赛道（悦发AI项目）</td>
+                            <td>学校</td>
+                            <td><span class="highlight">金奖</span></td>
+                        </tr>
+                        <tr onclick="showAwardDetail('中国国际大学生创新大赛红色筑梦之旅赛道（AI智农项目）', '校级金奖', '2025年4月', '学校', 'AI智农项目将人工智能技术应用于农业领域，为智慧农业的发展提供了技术支持，体现了科技服务三农的理念。')">
+                            <td><span class="level-badge level-校级">校级</span></td>
+                            <td>2025.4</td>
+                            <td>中国国际大学生创新大赛红色筑梦之旅赛道（AI智农项目）</td>
+                            <td>学校</td>
+                            <td><span class="highlight">金奖</span></td>
+                        </tr>
+                        <tr onclick="showAwardDetail('团干部培训', '校级结业证书', '获得时间不详', '学校团委（江西师范高等专科学校）', '团干部培训旨在提高学生干部的综合素质和工作能力，培养优秀的学生骨干力量。')">
+                            <td><span class="level-badge level-校级">校级</span></td>
+                            <td>-</td>
+                            <td>团干部培训</td>
+                            <td>学校团委（江西师范高等专科学校）</td>
+                            <td>结业证书</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('第八届大学生心理情景剧大赛《心灵的勇气》', '校级二等奖', '获得时间不详', '学校', '心理情景剧大赛通过戏剧表演的形式，展现心理健康主题，提高大学生的心理健康意识。')">
+                            <td><span class="level-badge level-校级">校级</span></td>
+                            <td>-</td>
+                            <td>第八届大学生心理情景剧大赛《心灵的勇气》</td>
+                            <td>学校（江西师范高等专科学校）</td>
+                            <td>二等奖</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('第十九届挑战杯全国大学生课外学术科技作品竞赛', '校级优秀奖', '获得时间不详', '学校（江西师范高等专科学校）', '挑战杯竞赛是全国性的大学生课外学术科技作品竞赛，旨在培养大学生的创新精神和实践能力。')">
+                            <td><span class="level-badge level-校级">校级</span></td>
+                            <td>-</td>
+                            <td>第十九届"挑战杯"全国大学生课外学术科技作品竞赛</td>
+                            <td>学校（江西师范高等专科学校）</td>
+                            <td>优秀奖</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('创新创业大赛决赛', '院级优秀奖', '获得时间不详', '院系（致远书院）', '创新创业大赛旨在激发学生的创新创业热情，培养创新创业能力。')">
+                            <td><span class="level-badge level-院级">院级</span></td>
+                            <td>-</td>
+                            <td>创新创业大赛决赛</td>
+                            <td>院系（致远书院）</td>
+                            <td>优秀奖</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('爱我国防主题演讲比赛', '院级获奖', '获得时间不详', '院系（致远书院）', '爱我国防主题演讲比赛旨在增强学生的国防意识和爱国情怀。')">
+                            <td><span class="level-badge level-院级">院级</span></td>
+                            <td>-</td>
+                            <td>爱我国防主题演讲比赛</td>
+                            <td>院系（致远书院）</td>
+                            <td>获奖</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('第十九届挑战杯院决赛', '院级优秀奖', '获得时间不详', '院系（致远书院）', '院级挑战杯竞赛是学院层面的学术科技作品竞赛，为学生提供展示创新成果的平台。')">
+                            <td><span class="level-badge level-院级">院级</span></td>
+                            <td>-</td>
+                            <td>第十九届"挑战杯"院决赛</td>
+                            <td>院系（致远书院）</td>
+                            <td>优秀奖</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('致远书院最美大学生', '院级荣誉称号', '获得时间不详', '院系（致远书院）', '最美大学生荣誉称号表彰在学习、生活、工作等方面表现突出的优秀学生。')">
+                            <td><span class="level-badge level-院级">院级</span></td>
+                            <td>-</td>
+                            <td>致远书院最美大学生</td>
+                            <td>院系（致远书院）</td>
+                            <td>荣誉称号</td>
+                        </tr>
+                        <tr onclick="showAwardDetail('实践活动', '县级实践证书', '获得时间不详', '县级相关部门', '县级实践活动证书体现了积极参与基层社会实践的态度和能力。')">
+                            <td><span class="level-badge level-县级">县级</span></td>
+                            <td>-</td>
+                            <td>实践活动</td>
+                            <td>县级相关部门</td>
+                            <td>实践证书</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 国家级奖项详情 -->
+        <div id="national-awards" class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                🏆 国家级奖项详情（7项）
+            </div>
+            <div class="section-content">
+                <p style="margin-bottom: 30px; color: #666; font-size: 1.1em;">以下是所有国家级奖项的详细信息，按时间顺序排列，展现了持续的学习进步轨迹。</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="award-detail-card">
+                            <div class="award-title">🥇 中国知网科普竞赛一等奖</div>
+                            <div class="award-details">
+                                <strong>🏢 颁奖单位：</strong>中国知网、问卷星、SPRRPRO<br>
+                                <strong>📅 获奖时间：</strong>2025年9月<br>
+                                <strong>🏅 奖项等级：</strong>国家级一等奖<br>
+                                <strong>💡 获奖意义：</strong>该竞赛旨在提高大学生的科学素养和创新思维能力，获得一等奖充分体现了扎实的知识基础和优秀的学习能力，展现了在科普知识领域的突出表现。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="award-detail-card">
+                            <div class="award-title">📜 软件著作权证书（2项）</div>
+                            <div class="award-details">
+                                <strong>🔹 幻笔商品三维数据建模与增强现实展示软件</strong><br>
+                                <strong>🔹 校园活动组织工具软件</strong><br>
+                                <strong>🏢 颁发单位：</strong>中华人民共和国国家版权局<br>
+                                <strong>📅 获得时间：</strong>2025年8月<br>
+                                <strong>💡 创新价值：</strong>这两项软件著作权体现了在技术创新和产品开发方面的能力，将理论知识转化为实际应用，具有重要的实用价值和创新意义。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="award-detail-card">
+                            <div class="award-title">🥈 全国大学生英语竞赛二等奖</div>
+                            <div class="award-details">
+                                <strong>🏢 颁奖单位：</strong>全国大学生英语竞赛组委会、全国高等师范院校外语教学与研究协作组<br>
+                                <strong>📅 获奖时间：</strong>2025年5月<br>
+                                <strong>🏅 奖项等级：</strong>国家级二等奖<br>
+                                <strong>💡 能力体现：</strong>该竞赛是面向全国大学生的英语综合能力竞赛，获得二等奖体现了优秀的英语语言运用能力和跨文化交流能力。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="award-detail-card">
+                            <div class="award-title">🎓 职业资格证书（3项）</div>
+                            <div class="award-details">
+                                <strong>✈️ 无人机驾驶员执照</strong> - 中国民用航空局<br>
+                                <strong>🗣️ 普通话水平测试等级证书</strong> - 国家语言文字工作委员会<br>
+                                <strong>💻 全国计算机等级考试证书</strong> - 教育部考试中心<br><br>
+                                <strong>💡 综合素养：</strong>这些职业资格证书体现了全面的技能储备和职业素养，涵盖了新兴技术、语言能力和计算机技能等多个方面。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 校级金奖亮点 -->
+        <div id="school-awards" class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                🌟 校级金奖成就亮点
+            </div>
+            <div class="section-content">
+                <p style="margin-bottom: 30px; color: #666; font-size: 1.1em;">在中国国际大学生创新大赛红色筑梦之旅赛道中获得双金奖，展现了在人工智能领域的突出创新能力。</p>
+                
+                <div class="award-detail-card glow">
+                    <div class="award-title">🏅 中国国际大学生创新大赛红色筑梦之旅赛道双金奖</div>
+                    <div class="award-details">
+                        <strong>🎯 悦发AI项目金奖</strong> - 2025年4月<br>
+                        <strong>🌾 AI智农项目金奖</strong> - 2025年4月<br>
+                        <strong>🏢 颁奖单位：</strong>学校<br>
+                        <strong>🎊 成就意义：</strong>这两个金奖项目充分展现了在人工智能和创新创业领域的突出能力：<br>
+                        <br>
+                        <strong>💡 悦发AI项目：</strong>结合了人工智能技术和视觉艺术，为光影效果的智能化处理提供了创新解决方案，体现了跨学科的创新能力和艺术与科技融合的前瞻性思维。<br>
+                        <br>
+                        <strong>🌱 AI智农项目：</strong>将人工智能技术应用于农业领域，为智慧农业的发展提供了技术支持，体现了科技服务三农的理念和社会责任感，符合红色筑梦之旅的主题要求。
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #667eea; margin-bottom: 20px;">🎯 项目技术亮点</h3>
+                    <div class="skill-tags">
+                        <div class="skill-tag">人工智能算法</div>
+                        <div class="skill-tag">计算机视觉</div>
+                        <div class="skill-tag">增强现实技术</div>
+                        <div class="skill-tag">智慧农业</div>
+                        <div class="skill-tag">数据建模</div>
+                        <div class="skill-tag">跨学科创新</div>
+                        <div class="skill-tag">产品设计</div>
+                        <div class="skill-tag">技术转化</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他荣誉成就 -->
+        <div id="other-honors" class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                ✨ 其他荣誉与成就
+            </div>
+            <div class="section-content">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                    
+                    <!-- 专业技能认证 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">🎯 专业技能认证（6项）</div>
+                        <div class="award-details">
+                            <strong>🤖 人工智能训练师（高级）</strong><br>
+                            <strong>🤖 人工智能训练师（初级）</strong><br>
+                            <strong>🚗 智能网联车安全员（高级）</strong><br>
+                            <strong>💻 阿里巴巴前端工程师（初级）</strong><br>
+                            <strong>📱 阿里巴巴终端工程师（初级）</strong><br>
+                            <strong>🎨 阿里巴巴设计专业能力认证</strong><br>
+                            <br>
+                            <strong>💡 能力体现：</strong>这些专业认证涵盖了人工智能、智能网联、前端开发、移动开发、UI设计等多个技术领域，体现了全面的技术素养和持续学习能力。
+                        </div>
+                    </div>
+                    
+                    <!-- 社会实践与志愿服务 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">🌟 社会实践与志愿服务</div>
+                        <div class="award-details">
+                            <strong>❤️ 志愿服务时长：267.5小时</strong><br>
+                            <strong>🏕️ 暑期"三下乡"社会实践</strong><br>
+                            <strong>🏠 暑期"返家乡"社会实践</strong><br>
+                            <strong>📚 学习强国积分：13386+分</strong><br>
+                            <strong>🏆 学习强国荣誉证书</strong><br>
+                            <br>
+                            <strong>💡 实践意义：</strong>丰富的志愿服务经历体现了强烈的社会责任感和奉献精神，通过实际行动服务社会，在实践中锻炼能力、增长才干。
+                        </div>
+                    </div>
+                    
+                    <!-- 学生工作经历 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">👥 学生工作与政治面貌</div>
+                        <div class="award-details">
+                            <strong>🎯 政治面貌：共青团员</strong><br>
+                            <strong>👔 班级团支部书记</strong>（24级雕刻艺术设计木器工艺班）<br>
+                            <strong>🏛️ 院学生会社会实践部负责人</strong>（致远书院）<br>
+                            <strong>🎓 团干部培训结业证书</strong><br>
+                            <strong>🌟 致远书院最美大学生荣誉称号</strong><br>
+                            <br>
+                            <strong>💡 综合素质：</strong>担任班级团支部书记和院学生会社会实践部负责人，体现了优秀的组织协调能力和服务意识。既能在班级层面做好团员思想引领工作，又能在院系层面组织开展社会实践活动，在同学中起到了良好的模范带头作用。
+                        </div>
+                    </div>
+                    
+                    <!-- 文学创作能力 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">📝 文学创作与表达能力</div>
+                        <div class="award-details">
+                            <strong>📖 第二十届青少年冰心文学江西省征文荣誉</strong><br>
+                            <strong>🎭 第八届大学生心理情景剧大赛二等奖</strong><br>
+                            <strong>🎤 爱我国防主题演讲比赛获奖</strong><br>
+                            <br>
+                            <strong>💡 能力展现：</strong>在文学创作、戏剧表演、演讲等方面的获奖经历体现了优秀的文字表达能力、舞台表现力和语言组织能力，展现了全面的人文素养。
+                        </div>
+                    </div>
+                    
+                    <!-- 创新创业能力 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">💡 创新创业能力</div>
+                        <div class="award-details">
+                            <strong>🏆 中国国际大学生创新大赛双金奖</strong><br>
+                            <strong>🏅 创新创业大赛决赛优秀奖</strong><br>
+                            <strong>🔬 第十九届"挑战杯"竞赛获奖</strong><br>
+                            <strong>💻 2项软件著作权</strong><br>
+                            <br>
+                            <strong>💡 创新精神：</strong>多项创新创业竞赛获奖和软件著作权的获得，充分体现了敏锐的创新意识、扎实的专业技能和将创意转化为现实的实践能力。
+                        </div>
+                    </div>
+                    
+                <!-- 综合学习能力 -->
+                <div class="award-detail-card">
+                    <div class="award-title">📚 学习成绩与个人信息</div>
+                    <div class="award-details">
+                        <strong>🎯 班级排名：1/33（综合考评排名）</strong><br>
+                        <strong>📖 必修课程：27门全部及格</strong><br>
+                        <strong>💯 成绩优异率：100%</strong><br>
+                        <strong>🏫 就读学校：江西师范高等专科学校</strong><br>
+                        <strong>🏛️ 院系：致远书院</strong><br>
+                        <strong>🎨 专业：雕刻艺术设计（三年制）</strong><br>
+                        <strong>📚 班级：24级雕刻艺术设计木器工艺班</strong><br>
+                        <strong>👤 基本信息：女，汉族，2006年3月生</strong><br>
+                        <br>
+                        <strong>💡 学习能力：</strong>作为2024年9月刚入学的新生，能在短时间内取得班级第一的优异成绩，体现了扎实的专业基础、优秀的学习能力和快速适应能力。
+                    </div>
+                </div>
+                </div>
+                
+                <!-- 技能标签云 -->
+                <div style="margin-top: 40px;">
+                    <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">🌈 综合技能图谱</h3>
+                    <div class="skill-tags" style="justify-content: center;">
+                        <div class="skill-tag">学习能力</div>
+                        <div class="skill-tag">创新思维</div>
+                        <div class="skill-tag">团队协作</div>
+                        <div class="skill-tag">项目管理</div>
+                        <div class="skill-tag">技术开发</div>
+                        <div class="skill-tag">文学创作</div>
+                        <div class="skill-tag">演讲表达</div>
+                        <div class="skill-tag">组织协调</div>
+                        <div class="skill-tag">社会实践</div>
+                        <div class="skill-tag">志愿服务</div>
+                        <div class="skill-tag">团支部工作</div>
+                        <div class="skill-tag">学生会工作</div>
+                        <div class="skill-tag">雕刻艺术</div>
+                        <div class="skill-tag">木器工艺</div>
+                        <div class="skill-tag">跨学科融合</div>
+                        <div class="skill-tag">持续学习</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 获奖统计分析 -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                📊 获奖统计分析
+            </div>
+            <div class="section-content">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                    
+                    <!-- 级别分布 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">🏆 获奖级别分布</div>
+                        <div class="award-details">
+                            <strong>🇨🇳 国家级：7项（36.8%）</strong><br>
+                            <strong>🏛️ 省级：1项（5.3%）</strong><br>
+                            <strong>🏙️ 市级：1项（5.3%）</strong><br>
+                            <strong>🏫 校级：5项（26.3%）</strong><br>
+                            <strong>🏛️ 院级：4项（21.1%）</strong><br>
+                            <strong>🏘️ 县级：1项（5.3%）</strong><br>
+                            <strong>📊 总计：19项</strong>
+                        </div>
+                    </div>
+                    
+                    <!-- 类型分布 -->
+                    <div class="award-detail-card">
+                        <div class="award-title">📋 奖项类型分布</div>
+                        <div class="award-details">
+                            <strong>🏆 竞赛获奖：10项</strong><br>
+                            &nbsp;&nbsp;• 金奖：2项<br>
+                            &nbsp;&nbsp;• 一等奖：1项<br>
+                            &nbsp;&nbsp;• 二等奖：2项<br>
+                            &nbsp;&nbsp;• 优秀奖：5项<br>
+                            <strong>💻 软件著作权：2项</strong><br>
+                            <strong>🎓 职业资格证书：3项</strong><br>
+                            <strong>🎯 专业技能认证：6项</strong><br>
+                            <strong>🌟 荣誉称号：2项</strong><br>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 时间分布 -->
+                <div class="award-detail-card">
+                    <div class="award-title">📅 2025年获奖时间线</div>
+                    <div class="award-details">
+                        <strong>🌸 4月：</strong>中国国际大学生创新大赛红色筑梦之旅赛道双金奖<br>
+                        <strong>🌺 5月：</strong>全国大学生英语竞赛二等奖<br>
+                        <strong>🌻 6月：</strong>第二十届青少年冰心文学江西省征文荣誉证书<br>
+                        <strong>🍂 8月：</strong>2项国家级软件著作权证书<br>
+                        <strong>🍁 9月：</strong>中国知网科普竞赛一等奖<br>
+                        <br>
+                        <strong>💡 发展轨迹：</strong>从创新创业到英语能力，从文学创作到技术开发，再到科普知识，体现了全面发展和持续进步的良好态势。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 国家奖学金申请理由 -->
+        <div id="application" class="application-section">
+            <h2 class="application-title">🎓 国家奖学金申请理由</h2>
+            <div class="application-content">
+                <p><strong>尊敬的评审委员会：</strong></p>
+                <br>
+                <p>我是江西师范高等专科学校致远书院雕刻艺术设计专业24级学生<span class="highlight">余诗瑶</span>，学号<span class="highlight">932407130093</span>，现申请2024-2025学年国家奖学金。</p>
+                <br>
+                <p><strong>🎯 学习成绩方面：</strong>综合排名<span class="highlight">1/33</span>，必修课<span class="highlight">27门全部及格</span>，成绩优异率<span class="highlight">100%</span>。</p>
+                <br>
+                <p><strong>🏆 获奖成果方面：</strong>共获得各级奖项<span class="highlight">19项</span>，其中国家级7项、省级1项、市级1项、校级5项、院级4项、县级1项。重点包括：校级中国国际大学生创新大赛红色筑梦之旅赛道<span class="highlight">金奖2项</span>（2025年4月），国家级中国知网科普竞赛<span class="highlight">一等奖1项</span>（2025年9月），全国大学生英语竞赛<span class="highlight">二等奖1项</span>（2025年5月）。</p>
+                <br>
+                <p><strong>💡 科技创新方面：</strong>获得国家级软件著作权<span class="highlight">2项</span>（2025年8月），专业技能认证<span class="highlight">6项</span>，职业资格证书<span class="highlight">3项</span>。</p>
+                <br>
+                <p><strong>🌟 社会实践方面：</strong>志愿服务时长<span class="highlight">267.5小时</span>，学习强国积分<span class="highlight">13386+分</span>，参与社会实践活动<span class="highlight">5次以上</span>。</p>
+                <br>
+                <p><strong>🎊 综合评价：</strong>综合数据显示，我在学习成绩、创新能力、社会实践等方面均表现突出，完全符合国家奖学金<span class="highlight">"德智体美劳全面发展"</span>的评选标准。</p>
+                <br>
+                <p style="text-align: right;"><strong>申请人：余诗瑶<br>📅 2025年9月</strong></p>
+            </div>
+        </div>
+
+        <!-- 底部区域 -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-title">🌟 持续努力，追求卓越 🌟</div>
+                <p>江西师范高等专科学校 致远书院</p>
+                <p>雕刻艺术设计专业 | 24级雕刻艺术设计木器工艺班</p>
+                <p>学号：932407130093 | 班级团支部书记 | 院学生会社会实践部负责人</p>
+                <br>
+                <p style="opacity: 0.8;">📧 "青春因奋斗而精彩，梦想因坚持而闪亮"</p>
+                <p style="font-size: 0.9em; opacity: 0.7; margin-top: 20px;">
+                    🎯 总获奖数：19项 | 🏆 国家级：7项 | 🥇 校级金奖：2项 | ❤️ 志愿服务：267.5小时 | 📚 班级排名：1/33
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</button>
+
+    <!-- 模态框 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalContent"></p>
+        </div>
+    </div>
+
+    <!-- 奖项详情模态框 -->
+    <div id="awardModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAwardModal()">&times;</span>
+            <h2 id="awardModalTitle"></h2>
+            <div id="awardModalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // 创建粒子效果
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.pageYOffset > 100) {
+                navbar.classList.add('scrolled');
+                scrollTop.classList.add('show');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollTop.classList.remove('show');
+            }
+        });
+
+        // 滚动到指定区域
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const navbarHeight = document.getElementById('navbar').offsetHeight;
+            const offsetTop = section.offsetTop - navbarHeight - 20;
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        // 滚动到顶部
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 切换章节展开/折叠
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const isCollapsed = content.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                content.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+            } else {
+                content.classList.add('collapsed');
+                header.classList.add('collapsed');
+            }
+        }
+
+        // 显示模态框
+        function showModal(title, content) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalContent').textContent = content;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // 显示奖项详情模态框
+        function showAwardDetail(title, level, date, unit, description) {
+            document.getElementById('awardModalTitle').textContent = title;
+            document.getElementById('awardModalContent').innerHTML = `
+                <p><strong>🏅 获奖等级：</strong>${level}</p>
+                <p><strong>📅 获奖时间：</strong>${date}</p>
+                <p><strong>🏢 颁奖单位：</strong>${unit}</p>
+                <br>
+                <p><strong>📝 详细说明：</strong></p>
+                <p style="line-height: 1.8; color: #666;">${description}</p>
+            `;
+            document.getElementById('awardModal').style.display = 'block';
+        }
+
+        // 关闭奖项详情模态框
+        function closeAwardModal() {
+            document.getElementById('awardModal').style.display = 'none';
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            const awardModal = document.getElementById('awardModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+            if (event.target == awardModal) {
+                awardModal.style.display = 'none';
+            }
+        }
+
+        // 确保页面可以正常滚动
+        function ensureScrollable() {
+            document.body.style.height = 'auto';
+            document.body.style.overflowY = 'auto';
+            document.documentElement.style.overflowY = 'auto';
+        }
+
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 确保页面可以滚动
+            ensureScrollable();
+            
+            
+            // 创建粒子效果
+            createParticles();
+            
+            // 添加页面加载动画
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // 添加数字动画效果
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(number => {
+                const finalValue = number.textContent;
+                if (!isNaN(parseFloat(finalValue))) {
+                    const duration = 2000;
+                    const start = 0;
+                    const end = parseFloat(finalValue);
+                    const startTime = Date.now();
+                    
+                    function updateNumber() {
+                        const now = Date.now();
+                        const progress = Math.min((now - startTime) / duration, 1);
+                        const currentValue = start + (end - start) * progress;
+                        
+                        if (finalValue.includes('.')) {
+                            number.textContent = currentValue.toFixed(1);
+                        } else {
+                            number.textContent = Math.floor(currentValue);
+                        }
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            number.textContent = finalValue;
+                        }
+                    }
+                    
+                    setTimeout(updateNumber, 500);
+                }
+            });
+        });
+
+        // 添加键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeAwardModal();
+            }
+            if (e.key === 'Home') {
+                e.preventDefault();
+                scrollToTop();
+            }
+            // 添加方向键滚动支持
+            if (e.key === 'ArrowUp') {
+                window.scrollBy(0, -100);
+            }
+            if (e.key === 'ArrowDown') {
+                window.scrollBy(0, 100);
+            }
+            if (e.key === 'PageUp') {
+                window.scrollBy(0, -window.innerHeight);
+            }
+            if (e.key === 'PageDown') {
+                window.scrollBy(0, window.innerHeight);
+            }
+        });
+
+        // 强制启用滚动
+        window.addEventListener('load', function() {
+            setTimeout(ensureScrollable, 100);
+        });
+
+        // 添加表格行点击效果
+        document.querySelectorAll('.awards-table tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.background = 'linear-gradient(135deg, #f8f9ff 0%, #e8edff 100%)';
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                this.style.background = '';
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
